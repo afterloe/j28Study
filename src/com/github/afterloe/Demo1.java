@@ -23,12 +23,14 @@ class AppleUtil {
 	}
 
 	/**
-	 * 方 法 作 为 Predicate参数p传递进去
+	 * 方 法 作 为 Predicate参数p传递进去方 法 Apple::isGreenApple （ 它 接 受 参 数 Apple 并 返 回 一
+	 * 个 boolean）给filterApples，后者则希望接受一个Predicate<Apple>参数。谓词 （predicate）
+	 * 在数学上常常用来代表一个类似函数的东西，它接受一个参数值，并返回true或false。
 	 */
 	public static Collection<Apple> filterApple(Collection<Apple> inventory, Predicate<Apple> function) {
 		Collection<Apple> __ = new ArrayList<Apple>();
 		for (Apple apple : inventory) {
-			//  符 合 function 所 代表的条件
+			// 符 合 function 所 代表的条件
 			if (function.test(apple)) {
 				__.add(apple);
 			}
