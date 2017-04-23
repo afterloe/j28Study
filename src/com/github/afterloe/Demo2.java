@@ -24,6 +24,7 @@ public class Demo2 {
 		 */
 		System.out.println(AppleUtil.filterApple(__, (Apple apple) -> "gree".equals(apple.getColor())));
 		System.out.println(AppleUtil.filterApple(__, (Apple apple) -> 150 < apple.getWeight()));
+		
 	}
 
 }
