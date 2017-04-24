@@ -10,9 +10,9 @@ import com.github.afterloe.domain.Apple;
 class AppleUtil {
 
 	/**
-	 * ¼ÙÉèÄãÓĞÒ»¸öAppleÀà£¬ËüÓĞÒ»¸ögetColor·½·¨£¬»¹ÓĞÒ»¸ö±äÁ¿inventory±£´æ×ÅÒ»¸öApplesµÄÁĞ±í¡£Äã¿ÉÄÜÏëÒªÑ¡³öËù
-	 * ÓĞµÄÂÌÆ»¹û£¬²¢·µ»ØÒ»¸öÁĞ±í¡£Í¨³£ÎÒÃÇÓÃÉ¸Ñ¡£¨filter£©Ò»´ÊÀ´±í´ïÕâ¸ö¸ÅÄî¡£°ÑÌõ¼ş´úÂë×÷Îª²ÎÊı´«µİ½øÈ¥£¬ÕâÑù¿ÉÒÔ±ÜÃâfilter·½·¨
-	 * ³öÏÖÖØ¸´µÄ´úÂë¡£
+	 * å‡è®¾ä½ æœ‰ä¸€ä¸ªAppleç±»ï¼Œå®ƒæœ‰ä¸€ä¸ªgetColoræ–¹æ³•ï¼Œè¿˜æœ‰ä¸€ä¸ªå˜é‡inventoryä¿å­˜ç€ä¸€ä¸ªApplesçš„åˆ—è¡¨ã€‚ä½ å¯èƒ½æƒ³è¦é€‰å‡ºæ‰€
+	 * æœ‰çš„ç»¿è‹¹æœï¼Œå¹¶è¿”å›ä¸€ä¸ªåˆ—è¡¨ã€‚é€šå¸¸æˆ‘ä»¬ç”¨ç­›é€‰ï¼ˆfilterï¼‰ä¸€è¯æ¥è¡¨è¾¾è¿™ä¸ªæ¦‚å¿µã€‚æŠŠæ¡ä»¶ä»£ç ä½œä¸ºå‚æ•°ä¼ é€’è¿›å»ï¼Œè¿™æ ·å¯ä»¥é¿å…filteræ–¹æ³•
+	 * å‡ºç°é‡å¤çš„ä»£ç ã€‚
 	 */
 	public static boolean isGreeApple(Apple apple) {
 		return "gree".equals(apple.getColor());
@@ -23,14 +23,14 @@ class AppleUtil {
 	}
 
 	/**
-	 * ·½ ·¨ ×÷ Îª Predicate²ÎÊıp´«µİ½øÈ¥·½ ·¨ Apple::isGreenApple £¨ Ëü ½Ó ÊÜ ²Î Êı Apple ²¢ ·µ »Ø Ò»
-	 * ¸ö boolean£©¸øfilterApples£¬ºóÕßÔòÏ£Íû½ÓÊÜÒ»¸öPredicate<Apple>²ÎÊı¡£Î½´Ê £¨predicate£©
-	 * ÔÚÊıÑ§ÉÏ³£³£ÓÃÀ´´ú±íÒ»¸öÀàËÆº¯ÊıµÄ¶«Î÷£¬Ëü½ÓÊÜÒ»¸ö²ÎÊıÖµ£¬²¢·µ»Øtrue»òfalse¡£
+	 * æ–¹ æ³• ä½œ ä¸º Predicateå‚æ•°pä¼ é€’è¿›å»æ–¹ æ³• Apple::isGreenApple ï¼ˆ å®ƒ æ¥ å— å‚ æ•° Apple å¹¶ è¿” å› ä¸€
+	 * ä¸ª booleanï¼‰ç»™filterApplesï¼Œåè€…åˆ™å¸Œæœ›æ¥å—ä¸€ä¸ªPredicate<Apple>å‚æ•°ã€‚è°“è¯ ï¼ˆpredicateï¼‰
+	 * åœ¨æ•°å­¦ä¸Šå¸¸å¸¸ç”¨æ¥ä»£è¡¨ä¸€ä¸ªç±»ä¼¼å‡½æ•°çš„ä¸œè¥¿ï¼Œå®ƒæ¥å—ä¸€ä¸ªå‚æ•°å€¼ï¼Œå¹¶è¿”å›trueæˆ–falseã€‚
 	 */
 	public static Collection<Apple> filterApple(Collection<Apple> inventory, Predicate<Apple> function) {
 		Collection<Apple> __ = new ArrayList<Apple>();
 		for (Apple apple : inventory) {
-			// ·û ºÏ function Ëù ´ú±íµÄÌõ¼ş
+			// ç¬¦ åˆ function æ‰€ ä»£è¡¨çš„æ¡ä»¶
 			if (function.test(apple)) {
 				__.add(apple);
 			}
@@ -42,7 +42,7 @@ class AppleUtil {
 public class Demo1 {
 
 	/**
-	 * ²âÊÔ
+	 * æµ‹è¯•
 	 */
 	public static void main(String[] args) {
 		Collection<Apple> __ = new HashSet<Apple>();

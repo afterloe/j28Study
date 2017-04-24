@@ -11,7 +11,7 @@ public class Demo3 {
 
 	public static void main(String[] args) {
 		/**
-		 * CollectionÖ÷ÒªÊÇÎªÁË´æ´¢ºÍ·ÃÎÊÊı¾İ£¬¶øStreamÔòÖ÷ÒªÓÃ ÓÚÃèÊö¶ÔÊı¾İµÄ¼ÆËã
+		 * Collectionä¸»è¦æ˜¯ä¸ºäº†å­˜å‚¨å’Œè®¿é—®æ•°æ®ï¼Œè€ŒStreamåˆ™ä¸»è¦ç”¨ äºæè¿°å¯¹æ•°æ®çš„è®¡ç®—
 		 */
 		Collection<Apple> __ = new HashSet<Apple>();
 
@@ -23,18 +23,18 @@ public class Demo3 {
 		__.add(new Apple(133, "gree"));
 
 		/**
-		 * Ê¹ÓÃStream API ÅäºÏ Lambda Ê¹ÓÃ¶àºËÄ£Ê½À´½øĞĞÊı¾İ´¦Àí(ÀàËÆmap-reduce)
-		 * 
-		 * ×ª»»ÎªStream£¬½øĞĞ²¢ĞĞ´¦Àí£¬È»ºóÔÙ×ª»»»ØList
-		 * 
-		 * Ë³Ğò´¦Àí
+		 * ä½¿ç”¨Stream API é…åˆ Lambda ä½¿ç”¨å¤šæ ¸æ¨¡å¼æ¥è¿›è¡Œæ•°æ®å¤„ç†(ç±»ä¼¼map-reduce)
+		 *
+		 * è½¬æ¢ä¸ºStreamï¼Œè¿›è¡Œå¹¶è¡Œå¤„ç†ï¼Œç„¶åå†è½¬æ¢å›List
+		 *
+		 * é¡ºåºå¤„ç†
 		 */
 		List<Apple> heavyApples = __.stream().filter((Apple apple) -> 150 < apple.getWeight()).collect(toList());
 
 		System.out.println(heavyApples);
-		
+
 		/**
-		 * ²¢ĞĞ´¦Àí
+		 * å¹¶è¡Œå¤„ç†
 		 */
 		List<Apple> colorApples = __.parallelStream().filter((Apple apple) -> "gree".equals(apple.getColor())).collect(toList());
 		System.out.println(colorApples);

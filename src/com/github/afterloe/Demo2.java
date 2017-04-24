@@ -8,7 +8,7 @@ import com.github.afterloe.domain.Apple;
 public class Demo2 {
 
 	/**
-	 * Lambda ÷ÿ‘ÿ AppleUtil::isGreeApple ∫Õ  AppleUtil::isHeavyApple
+	 * Lambda ÈáçËΩΩ AppleUtil::isGreeApple Âíå  AppleUtil::isHeavyApple
 	 */
 	public static void main(String[] args) {
 		Collection<Apple> __ = new HashSet<Apple>();
@@ -18,13 +18,13 @@ public class Demo2 {
 		__.add(new Apple(140, "gree"));
 		__.add(new Apple(152, "red"));
 		__.add(new Apple(133, "gree"));
-		
+
 		/**
-		 *  π”√Lambdaø…“‘∏¸º””≈—≈µƒ±‡–¥ƒ‰√˚∫Ø ˝
+		 * ‰ΩøÁî®LambdaÂèØ‰ª•Êõ¥Âä†‰ºòÈõÖÁöÑÁºñÂÜôÂåøÂêçÂáΩÊï∞
 		 */
 		System.out.println(AppleUtil.filterApple(__, (Apple apple) -> "gree".equals(apple.getColor())));
 		System.out.println(AppleUtil.filterApple(__, (Apple apple) -> 150 < apple.getWeight()));
-		
+
 	}
 
 }
