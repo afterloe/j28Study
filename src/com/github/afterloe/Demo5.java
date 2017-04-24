@@ -1,5 +1,6 @@
 package com.github.afterloe;
 
+import com.github.afterloe.domain.Apple;
 import com.github.afterloe.inter.BufferedReaderProcess;
 import com.github.afterloe.inter.IntPredicate;
 
@@ -7,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  * Created by afterloe on 4/24/2017.
@@ -42,5 +44,8 @@ public class Demo5 {
          */
         Predicate<Integer> i2 = (Integer i) -> i%2 == 1; // 有封装 int -> Interger
         System.out.println(i2.test(1003));
+
+        Supplier<Apple> apple = Apple::new; // 构造函数引用，等价于 Supplier<Apple> apple = () -> new Apple();
+        System.out.println(apple);
     }
 }
