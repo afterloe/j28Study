@@ -9,6 +9,17 @@ public class Dish {
     private String name;
     private boolean vegetarian;
     private int calories;
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "name='" + name + '\'' +
+                ", vegetarian=" + vegetarian +
+                ", calories=" + calories +
+                ", type=" + type +
+                '}';
+    }
+
     private Type type;
 
     public Dish() {

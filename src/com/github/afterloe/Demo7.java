@@ -63,7 +63,31 @@ public class Demo7 {
     @Test
     public void streamAPIDemo3() {
         /**
-         *  
+         * 跳过元素
          */
+        Collection<Dish> menu = Demo7.generatorMenu();
+
+        // 跳过 2个元素
+        Collection<Dish> dishes = menu.stream()
+                .filter(d -> d.isVegetarian())
+                .skip(2)
+                .collect(toList());
+
+        System.out.println(dishes);
+    }
+
+    @Test
+    public void streamAPIDemo4() {
+        /**
+         * 使用map 进行映射 将集合中的一个元素进行消费，转换成其他的类型的元素
+         */
+        Collection<Dish> menu = Demo7.generatorMenu();
+
+        Collection<Integer> list = menu.stream()
+                .map(Dish::getCalories)
+                .distinct()
+                .collect(toList());
+
+        System.out.println(list);
     }
 }
