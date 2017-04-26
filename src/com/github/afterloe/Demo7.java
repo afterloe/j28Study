@@ -5,7 +5,9 @@ import com.github.afterloe.enums.Type;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -46,5 +48,22 @@ public class Demo7 {
                 .collect(toList());
 
         System.out.println(threeHighCaloricDishNames);
+    }
+
+    @Test
+    public void steamAPIDemo2(){
+        /**
+         * Stream 中的 终端操作 流只能消费一次的! 切记
+         */
+        Collection<String> title = Arrays.asList("afterloe", "joe", "sheldon", "grace", "yangyangyang");
+        Stream<String> stream = title.stream();
+        stream.forEach(System.out::println);
+    }
+
+    @Test
+    public void streamAPIDemo3() {
+        /**
+         *  
+         */
     }
 }
