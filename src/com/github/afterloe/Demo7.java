@@ -109,7 +109,7 @@ public class Demo7 {
     }
 
     @Test
-    public void steamAPIDemo6() {
+    public void streamAPIDemo6() {
         Collection<Integer> keys = Arrays.asList(1,2,5,7,10,13,15);
         Collection<Integer> value = keys.stream()
                 .map(x -> x * x)
@@ -119,12 +119,26 @@ public class Demo7 {
     }
 
     @Test
-    public void steamAPIDemo7() {
+    public void streamAPIDemo7() {
         Collection<Integer> a = Arrays.asList(1,2,3);
         Collection<Integer> b = Arrays.asList(3,4);
 
         Collection<int[]> value = a.stream()
                 .flatMap(i -> b.stream().map(j -> new int[]{i,j}))
+                .collect(toList());
+
+        value.stream().forEach(i -> System.out.println(Arrays.toString(i)));
+    }
+
+    @Test
+    public void streamAPIDemo8() {
+        Collection<Integer> a = Arrays.asList(1,2,3);
+        Collection<Integer> b = Arrays.asList(3,4);
+
+        Collection<int[]> value = a.stream()
+                .flatMap(i -> b.stream()
+                        .filter(j -> 0 == (i + j) % 3)
+                        .map(j -> new int[] {i, j}))
                 .collect(toList());
 
         value.stream().forEach(i -> System.out.println(Arrays.toString(i)));
