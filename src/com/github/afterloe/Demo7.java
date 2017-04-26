@@ -90,4 +90,31 @@ public class Demo7 {
 
         System.out.println(list);
     }
+
+    @Test
+    public void streamAPIDemo5() {
+        /**
+         * flatMap + Array.stream 来进行 流的扁平化管理
+         *
+         * flatMap 方法的效果是 各个数组分别映射成一个流的内容并用把生成的单个流聚合起来
+         */
+        Collection<String> words = Arrays.asList("afterloe", "joe", "sheldon", "grace", "yangyangyang");
+        Collection<String> uniqueCharacters = words.stream()
+                .map(w -> w.split(""))
+                .flatMap(Arrays::stream)
+                .distinct()
+                .collect(toList());
+
+        System.out.println(uniqueCharacters);
+    }
+
+    @Test
+    public void steamAPIDemo6() {
+        Collection<Integer> keys = Arrays.asList(1,2,5,7,10,13,15);
+        Collection<Integer> value = keys.stream()
+                .map(x -> x * x)
+                .collect(toList());
+
+        System.out.println(value);
+    }
 }
