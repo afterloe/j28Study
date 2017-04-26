@@ -117,4 +117,16 @@ public class Demo7 {
 
         System.out.println(value);
     }
+
+    @Test
+    public void steamAPIDemo7() {
+        Collection<Integer> a = Arrays.asList(1,2,3);
+        Collection<Integer> b = Arrays.asList(3,4);
+
+        Collection<int[]> value = a.stream()
+                .flatMap(i -> b.stream().map(j -> new int[]{i,j}))
+                .collect(toList());
+
+        value.stream().forEach(i -> System.out.println(Arrays.toString(i)));
+    }
 }
