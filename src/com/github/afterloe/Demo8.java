@@ -3,6 +3,7 @@ package com.github.afterloe;
 import com.github.afterloe.domain.Dish;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -27,6 +28,17 @@ public class Demo8 {
 
     @Test
     public void testReduce() {
-        
+        Collection<Integer> numbers = Arrays.asList(1,3,4,5,6,7,98,9,3,21,2,5,23,5);
+        int sum = numbers.stream().reduce(0, (a, b) -> a + b);
+
+        System.out.println(sum);
+    }
+
+    @Test
+    public void testReduce2() {
+        Collection<Integer> numbers = Arrays.asList(1,3,4,5,6,7,98,9,3,21,2,5,23,5);
+        int sum = numbers.stream().reduce(0, Integer::sum); // 或 使用静态方法
+
+        System.out.println(sum);
     }
 }
