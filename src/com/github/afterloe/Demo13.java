@@ -27,4 +27,24 @@ public class Demo13 {
 
         System.out.println(menuMap);
     }
+
+    @Test
+    /**
+     * 自定义分类
+     */
+    public void test1() {
+        Collection<Dish> menu = Demo7.generatorMenu();
+
+        Map<String, List<Dish>> menuMap = menu.stream()
+                .collect(groupingBy(dish -> {
+                    if (dish.getCalories() < 400) {
+                        return "低热量";
+                    } else if (dish.getCalories() >= 400 && dish.getCalories() < 600) {
+                        return "中等热量";
+                    }
+                    return "高热量";
+                }));
+
+        System.out.println(menuMap);
+    }
 }
