@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static java.util.Comparator.comparing;
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
 
@@ -29,7 +28,7 @@ public class Demo14 {
                          */
                         groupingBy(Dish::getType,
                                 /**
-                                 * 二级分组 安装热量分组
+                                 * 二级分组 按照热量分组
                                  */
                                 groupingBy(dish -> {
                                     // 自定义分组
@@ -92,8 +91,42 @@ public class Demo14 {
     @Test
     /**
      * groupingBy 联合使用的其他收集器的 例子
+     *
+     * 按照类型分组 统计每类的卡路里的总数
      */
     public void test3() {
-        
+        Collection<Dish> menu = Demo7.generatorMenu();
+
+        Map<Type, Integer> totalCaloriesByType = menu.stream()
+                .collect(groupingBy(Dish::getType,
+                        summingInt(Dish::getCalories)));
+
+        System.out.println(totalCaloriesByType);
+    }
+
+    @Test
+    /**
+     * 转换成其他的例子
+     */
+    public void test4() {
+        Collection<Dish> menu = Demo7.generatorMenu();
+
+        Map<Type, Collection<String>> caloricLevelsByType =
+                menu.stream().collect(
+                        groupingBy(Dish::getType,
+                                mapping(
+                                        dish -> {
+                                            if (dish.getCalories() < 400) {
+                                                return "低热量";
+                                            } else if (dish.getCalories() >= 400 && dish.getCalories() < 600) {
+                                                return "中等热量";
+                                            }
+                                                return "高热量";
+                                        }, toCollection(HashSet::new)
+                                )
+                        )
+                );
+
+        System.out.println(caloricLevelsByType);
     }
 }
