@@ -4,11 +4,11 @@ import com.github.afterloe.domain.Dish;
 import com.github.afterloe.enums.Type;
 import org.junit.Test;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import static java.util.stream.Collectors.groupingBy;
+import static java.util.Comparator.comparing;
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.*;
 
 /**
  * Created by afterloe on 5/1/2017.
@@ -44,5 +44,56 @@ public class Demo14 {
                 );
 
         System.out.println(dishesByTypeCaloricLevel);
+    }
+
+    @Test
+    /**
+     * 输出 每种类型的菜有多少个
+     */
+    public void test1() {
+        Collection<Dish> menu = Demo7.generatorMenu();
+
+        Map<Type, Long> typeCount = menu.stream()
+                /**
+                 * grouping 函数 第二个不一定是 grouping 函数，也可以是其他的函数
+                 */
+                .collect(groupingBy(Dish::getType, counting()));
+
+        System.out.println(typeCount);
+    }
+
+    @Test
+    /**
+     * 转换收集器结果
+     */
+    public void test2() {
+        Collection<Dish> menu = Demo7.generatorMenu();
+
+        Map<Type, Dish> typeDishMap = menu.stream()
+                /**
+                 * groupingBy收集器包裹着collectingAndThen收集器，
+                 * 因此分组操作得到的每个子流都用这第二个收集器做进一步归约
+                 */
+                .collect(groupingBy(Dish::getType,
+                        /**
+                         * 工厂方法 接受两个参数 转换的收集器 转换函数
+                         */
+                        collectingAndThen(
+                                maxBy(comparingInt(Dish::getCalories)),
+                                /**
+                                 * collectingAndThen收集器会对 其结果应用Optional:get转换函数
+                                 * 从 optional 中获取值
+                                 */
+                                Optional::get)));
+
+        System.out.println(typeDishMap);
+    }
+
+    @Test
+    /**
+     * groupingBy 联合使用的其他收集器的 例子
+     */
+    public void test3() {
+        
     }
 }
