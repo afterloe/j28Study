@@ -3,10 +3,6 @@ package com.github.afterloe;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.IntStream;
 
 /**
  * Created by afterloe on 5/3/2017.
