@@ -18,7 +18,7 @@ public class Demo18 {
         BigDecimal x = new BigDecimal("0.97");
         for (int i = 0; i < 11; i++) {
             x = x.multiply(x);
-            System.out.println(x);
+            System.out.println(new BigDecimal("1").subtract(x));
         }
 
         System.out.println(x);
